@@ -20,6 +20,20 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Omni",
 
+
+  //code runner
+  "code-runner.executorMap": {
+        "javascript": "node",
+        "php": "C:\\laragon\\bin\\php\\php-8.1.10-Win32-vs16-x64\\php.exe",
+        "python": "python",
+        "perl": "perl",
+        "ruby": "C:\\Ruby23-x64\\bin\\ruby.exe",
+        "go": "go run",
+        "html": "\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"",
+        "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+        "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    },
+
   // php formater
   "phpfmt.passes": [
     "PSR2KeywordsLowerCase",
