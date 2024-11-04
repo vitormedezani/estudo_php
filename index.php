@@ -13,7 +13,7 @@
 <?php
 
 
-$message = "<h2 align=center>Fazendo um jogo da velha!!</h2>";
+$message = "<h1 align=center>Fazendo um jogo da velha!!</h1>";
 echo $message;
 //declarando array da tabela/velha
 $v = array(
@@ -29,25 +29,23 @@ $v = array(
 
 $jogador = "X";
 
-printf("Você escolheu jogar com " . strtoupper($jogador));
+echo "<script>alert('Você escolheu jogar com " . strtoupper($jogador) . "');</script>";
 
-function ViewVelha($v1) {
-  echo "<p>     A   B   C";
+function ViewVelha($v1, $v2, $v3, $v4, $v5, $v6, $v7, $v8, $v9) {
+  echo "<h2 align=center>     A   B   C";
   echo "\n   +---+--+----+";
-  echo "\n 1 | $v1 | $v1 | $v1 |";
+  echo "\n 1 | $v1 | $v4 | $v7 |";
   echo "\n   |---+--+----|";
-  echo "\n 2 | $v1 | $v1 | $v1 |";
+  echo "\n 2 | $v2 | $v5 | $v8 |";
   echo "\n   |---+--+----|";
-  echo "\n 3 | $v1 | $v1 | $v1 |";
-  echo "\n   +---+--+----+</p>";
+  echo "\n 3 | $v3 | $v6 | $v9 |";
+  echo "\n   +---+--+----+</h2>";
 
   return;
 }
 
 
-echo array_map('ViewVelha', $v);
-
-// echo ViewVelha($v['a1'], $v['a2'], $v['a3'], $v['b1'], $v['b2'], $v['b3'], $v['c1'], $v['c2'], $v['c3']);
+echo ViewVelha($v['a1'], $v['a2'], $v['a3'], $v['b1'], $v['b2'], $v['b3'], $v['c1'], $v['c2'], $v['c3']);
 
 
 
