@@ -28,20 +28,20 @@
   //declarando principais variaveis/array
 
 
-  $jogador = "X";
+  $jogador = "";
 
-  $cpu = "O";
+  $cpu = "";
 
   $v = array(
-    'a1' => "$jogador",
+    'a1' => " ",
     'a2' => " ",
     'a3' => " ",
     'b1' => " ",
-    'b2' => "$jogador",
+    'b2' => " ",
     'b3' => " ",
     'c1' => " ",
     'c2' => " ",
-    'c3' => "$jogador");
+    'c3' => " ");
 
   function ViewVelha($v1 = array()) {
     echo "<h2 align=center>    A   B   C";
@@ -138,10 +138,10 @@
 
   switch (@$_REQUEST["page"]) {
     case 'verificar-jogador':
-      include_once("verificar-jogador.php");
+      include("verificar-jogador.php");
       break;
     case 'velha':
-      include_once("velha.php");
+      include("velha.php");
       break;
     default:
       echo "<div align=\"center\"><form action=\"?page=verificar-jogador\" method=\"post\"><h1>Como deseja jogar?</h1><br><button type=\"submit\" name=\"jogador\" value=\"X\">X</button><button type=\"submit\" name=\"jogador\" value=\"O\">O</button></form></div>";
