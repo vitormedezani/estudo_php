@@ -28,9 +28,9 @@
   //declarando principais variaveis/array
 
 
-  $jogador = "";
+  $jogador = " ";
 
-  $cpu = "";
+  $cpu = " ";
 
   $v = array(
     'a1' => " ",
