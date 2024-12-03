@@ -36,7 +36,7 @@
 
   $array_jogo = array('-', '-', '-', '-', '-', '-', '-', '-', '-');
 
-  $jogada = '';
+  $jogada = 'nula';
 
   //jg = jogo
   function ViewVelha($jg = array()) {
