@@ -28,33 +28,39 @@
   //declarando principais variaveis/array
 
 
-  $jogador = " ";
+  $array_jogador = array('', '', '');;
 
-  $cpu = " ";
+  $array_cpu = array('', '', '');
 
-  $v = array(
-    'a1' => " ",
-    'a2' => " ",
-    'a3' => " ",
-    'b1' => " ",
-    'b2' => " ",
-    'b3' => " ",
-    'c1' => " ",
-    'c2' => " ",
-    'c3' => " ");
+  $array_posicao = array('a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3');
 
-  function ViewVelha($v1 = array()) {
+  $array_jogo = array('-', '-', '-', '-', '-', '-', '-', '-', '-');
+
+  $jogada = '';
+
+  //jg = jogo
+  function ViewVelha($jg = array()) {
     echo "<h2 align=center>    A   B   C";
     echo "\n   +---+---+---+";
-    echo "\n 1 | ".$v1['a1']." | ".$v1['b1']." | ".$v1['c1']." |";
-    echo "\n   |---+---+---|";
-    echo "\n 2 | ".$v1['a2']." | ".$v1['b2']." | ".$v1['c2']." |";
-    echo "\n   |---+---+---|";
-    echo "\n 3 | ".$v1['a3']." | ".$v1['b3']." | ".$v1['c3']." |";
+    echo "\n 1 |"; 
+
+    for ($i=0; $i < 9; $i++) {
+      
+      echo " ".$jg[$i]." |";
+      if ($i == 2) {
+        echo "\n   |---+---+---|";
+        echo "\n 2 |";
+      } elseif ($i == 5) {
+        echo "\n   |---+---+---|";
+        echo "\n 3 |";
+      } 
+      }
     echo "\n   +---+---+---+</h2>";
 
     return;
   }
+
+
 
   function VerificarVencedor($v1 = array()) {
 
@@ -131,9 +137,8 @@
     }
   }
 
-  //echo ViewVelha($v['a1'], $v['a2'], $v['a3'], $v['b1'], $v['b2'], $v['b3'], $v['c1'], $v['c2'], $v['c3']);
-  call_user_func('ViewVelha', $v);
-  call_user_func('VerificarVencedor', $v);
+  
+  // call_user_func('VerificarVencedor', $array_jogo);
 
 
   switch (@$_REQUEST["page"]) {
@@ -144,6 +149,9 @@
       include("velha.php");
       break;
     default:
+
+      // call_user_func('ViewVelha', $array_jogo);
+
       echo "<div align=\"center\"><form action=\"?page=verificar-jogador\" method=\"post\"><h1>Como deseja jogar?</h1><br><button type=\"submit\" name=\"jogador\" value=\"X\">X</button><button type=\"submit\" name=\"jogador\" value=\"O\">O</button></form></div>";
       break;
   }
