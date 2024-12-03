@@ -19,17 +19,17 @@
     }
   }
 
-  function ReceberJogoLoop($array = array()) {
-    if (!isset($_REQUEST["jogo_loop"])) {
-      $resultado = $array;
-    }
-    if (isset($_REQUEST["jogo_loop"])) {
-      $array2 = $_REQUEST["jogo_loop"];
-      $resultado = explode(" ", $array2);
-      $resultado = "TESTE";
-    }
-    return $resultado;
-  }
+  // function ReceberJogoLoop($array = array()) {
+  //   if (!isset($_REQUEST["jogo_loop"])) {
+  //     $resultado = $array;
+  //   }
+  //   if (isset($_REQUEST["jogo_loop"])) {
+  //     $array2 = $_REQUEST["jogo_loop"];
+  //     $resultado = explode(" ", $array2);
+  //     $resultado = "TESTE";
+  //   }
+  //   return $resultado;
+  // }
 
   // echo "testando" . ReceberVarPost();
   
@@ -37,15 +37,15 @@
 ?>
 
 <!-- recebendo o valor do post SOMENTE ao CARREGAR a página pela PRIMEIRA vez  -->
-<div onload="<?php $array_jogador = ReceberJogadorLoop(); $array_jogo = ReceberJogoLoop($array_jogo); if(@isset($_REQUEST["jogada"])) { $jogada = $_REQUEST["jogada"]; } ?>">  
+<div onload="<?php $array_jogador = ReceberJogadorLoop();  if(isset($_REQUEST["jogada"])) { $jogada = $_REQUEST["jogada"]; } ?>">  
 <?php
 
 var_dump($array_jogador);
 
   echo "<h1 align=center> Testando Jogador  ".$array_jogador[0]."</h1>";
 
-  if ($jogada != '' ) {
-    $array_jogo = @call_user_func('RealizarJogada', $array_posicao, $jogada, $array_jogador);
+  if ($jogada != 'nula' ) {
+    $array_jogo = @call_user_func('RealizarJogada', $jogada, $array_posicao, $array_jogador, $array_jogo);
   }
   
   // include __DIR__.'/ver-velha.php';
@@ -81,14 +81,19 @@ var_dump($array_jogador);
   var_dump($array_cpu);
   echo "<h2>JOGO DA VELHA</h2>";
   var_dump($array_jogo);
+  echo "<h2>JOGADA</h2>";
+  var_dump($jogada);
   // call_user_func('ViewVelha', $v);
 
   //arr_psc = ARRAY da posição jogada = posição passada no POST pelo usuário jgdr = jogador
-  function RealizarJogada($arr_psc = array(), $jogada, $jgdr = array()) {
+  function RealizarJogada($jogada, $posicao = array(), $jogador = array(), $jogo = array()) {
 
     for ($i=0; $i < 9; $i++) { 
-      if ($arr_psc[$i] == $jogada) {
-        $resultado = [ $jgdr[$i] ];
+      if ($posicao[$i] == $jogada) {
+        $resultado[$i] =  $jogador[$i];
+      }
+      else {
+        $resultado[$i] =  $jogo[$i];
       }
     }
     return $resultado;
@@ -103,15 +108,9 @@ var_dump($array_jogador);
       echo $array_jogador[$i] . " ";
     }
   } ?>" />
-  <input type="hidden" name="jogo_loop" value= "<?php for ($i=0;  $i < 9 ; $i++)  { 
-    if ($i == 8) {
-      echo $array_jogo[$i];
-    } else {
-      echo $array_jogo[$i] . " ";
-    }
-  } ?>" />
+ 
   <ul>
-    <li><input type="radio" name="jogada" id="a1" value="a1">a1</li>
+    <li><input type="radio" name="jogada" id="a1" value="a2">a1</li>
     <li></li>
     <li></li>
     <li></li>
