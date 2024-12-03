@@ -19,25 +19,22 @@
     }
   }
 
-  // function ReceberJogoLoop($array = array()) {
-  //   if (!isset($_REQUEST["jogo_loop"])) {
-  //     $resultado = $array;
-  //   }
-  //   if (isset($_REQUEST["jogo_loop"])) {
-  //     $array2 = $_REQUEST["jogo_loop"];
-  //     $resultado = explode(" ", $array2);
-  //     $resultado = "TESTE";
-  //   }
-  //   return $resultado;
-  // }
-
-  // echo "testando" . ReceberVarPost();
-  
+  function ReceberJogoLoop($array = array()) {
+    if (!isset($_REQUEST["jogo_loop"])) {
+      $resultado = $array;
+    }
+    if (isset($_REQUEST["jogo_loop"])) {
+      $array2 = $_REQUEST["jogo_loop"];
+      $resultado = explode(" ", $array2);
+      
+    }
+    return $resultado;
+  }
 
 ?>
 
 <!-- recebendo o valor do post SOMENTE ao CARREGAR a página pela PRIMEIRA vez  -->
-<div onload="<?php $array_jogador = ReceberJogadorLoop();  if(isset($_REQUEST["jogada"])) { $jogada = $_REQUEST["jogada"]; } ?>">  
+<div onload="<?php $array_jogador = ReceberJogadorLoop(); $array_jogo = ReceberJogoLoop($array_jogo);  if(isset($_REQUEST["jogada"])) { $jogada = $_REQUEST["jogada"]; } ?>">  
 <?php
 
 var_dump($array_jogador);
@@ -108,9 +105,17 @@ var_dump($array_jogador);
       echo $array_jogador[$i] . " ";
     }
   } ?>" />
+
+  <input type="hidden" name="jogo_loop" value= "<?php for ($i=0;  $i < 9 ; $i++)  { 
+    if ($i == 8) {
+      echo $array_jogo[$i];
+    } else {
+      echo $array_jogo[$i] . " ";
+    }
+  } ?>" />
  
   <ul>
-    <li><input type="radio" name="jogada" id="a1" value="a2">a1</li>
+    <li><input type="radio" name="jogada" id="a1" value="a3">a1</li>
     <li></li>
     <li></li>
     <li></li>
