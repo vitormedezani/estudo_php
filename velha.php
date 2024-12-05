@@ -42,7 +42,7 @@ var_dump($array_jogador);
   echo "<h1 align=center> Testando Jogador  ".$array_jogador[0]."</h1>";
 
   if ($jogada != 'nula' ) {
-    $array_jogo = @call_user_func('RealizarJogada', $jogada, $array_posicao, $array_jogador, $array_jogo);
+    $array_jogo = @call_user_func('Jogada', $jogada, $array_posicao, $array_jogador, $array_jogo);
   }
   
   // include __DIR__.'/ver-velha.php';
@@ -83,7 +83,7 @@ var_dump($array_jogador);
   // call_user_func('ViewVelha', $v);
 
   //arr_psc = ARRAY da posição jogada = posição passada no POST pelo usuário jgdr = jogador
-  function RealizarJogada($jogada, $posicao = array(), $jogador = array(), $jogo = array()) {
+  function Jogada($jogada, $posicao = array(), $jogador = array(), $jogo = array()) {
 
     for ($i=0; $i < 9; $i++) { 
       if ($posicao[$i] == $jogada) {
@@ -91,6 +91,23 @@ var_dump($array_jogador);
       }
       else {
         $resultado[$i] =  $jogo[$i];
+      }
+    }
+    return $resultado;
+  }
+
+
+  //Função para jogada da máquina, talvez dê para misturar com a função jogada
+  function JogadaCpu($jogadacpu, $posicao = array(), $jogador = array(), $jogo = array()) {
+    while ($jogadacpu != 10) {
+      switch ($jogo[$jogadacpu])  {
+        case '-':
+          $resultado[$jogadacpu] = $jogador[$jogadacpu];
+          $jogadacpu = 10;
+          break;
+        default:
+          $jogadacpu = mt_rand(0, 9);
+          break;
       }
     }
     return $resultado;
@@ -113,9 +130,10 @@ var_dump($array_jogador);
       echo $array_jogo[$i] . " ";
     }
   } ?>" />
- 
+
   <ul>
-    <li><input type="radio" name="jogada" id="a1" value="a3">a1</li>
+    <!-- PASSAR PARA O PHP COM LOOP - VERIFICAR SE A CASA ESTÁ LIVRE E PRINTAR A <li> -->
+    <!-- <li><input type="radio" name="jogada" id="a1" value="a3">a1</li>
     <li></li>
     <li></li>
     <li></li>
@@ -123,7 +141,7 @@ var_dump($array_jogador);
     <li></li>
     <li></li>
     <li></li>
-    <li></li>
+    <li></li> -->
   </ul>
   <button type="submit">OK</button>
 </form>
